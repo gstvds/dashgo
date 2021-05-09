@@ -9,6 +9,7 @@ interface ActiveLinkProps extends LinkProps {
 
 export function ActiveLink({ children, shouldMatchExactHref = false, ...rest }: ActiveLinkProps) {
   const { asPath } = useRouter();
+
   const isActive = useMemo(() => {
     if (shouldMatchExactHref && (asPath === rest.href || asPath === rest.as)) return true;
     if (!shouldMatchExactHref && (asPath.startsWith(String(rest.href)) || asPath.startsWith(String(rest.as)))) return true;
